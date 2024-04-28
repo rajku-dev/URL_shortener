@@ -6,22 +6,112 @@
     <title>URL Generator</title>
     <style>
         body {
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f5ff; /* Light blue background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #004080; /* Dark blue header */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #004080; /* Dark blue label */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #004080; /* Dark blue border */
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #004080; /* Dark blue button */
+            color: #fff; /* White text color */
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00264d; /* Darker blue on hover */
+        }
+
+        button[type="submit"] {
+            background-color: #004080; /* Dark blue button */
+            color: #fff; /* White text color */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00264d; /* Darker blue on hover */
+        }
+
+        .generated-url {
+            margin-top: 20px;
+            color: #004080; /* Dark blue text */
+            text-align: center;
+        }
+
+        .see-all-btn {
+            background-color: #004080; /* Dark blue button */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .see-all-btn:hover {
+            background-color: #00264d; /* Darker blue on hover */
         }
     </style>
 </head>
 <body>
-    <h1>URL Shortener</h1>
-    <% if(locals.id){ %>
-        <p>URL Generated http://localhost:3000/url/<%= id %></p>
+    <% if (locals.username) { %>
+     <h1>Hi <%= username %></h1>
     <% } %>
-    <form action="/url" method="POST">
-        <label for="url" >Enter Your URL</label>
-        <input type="text" name="redirectURL" placeholder=" https://example.com" id="url"/>
-        <button type="submit">Generate</button>
-    </form>
-    <form action="/url" method="get">
-        <button type="submit">See your all URLs</button>
-    </form>
+    <br>
+    <% if(locals.id){ %>
+        <h3>URL Generated http://localhost:3000/url/<%= id %></h3>
+    <% } %>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form action="/url" method="POST">
+            <label for="url">Enter Your URL</label>
+            <input type="text" name="redirectURL" placeholder=" https://example.com" id="url"/>
+            <button type="submit">Generate</button>
+        </form>
+        <form action="/url" method="get">
+            <button type="submit">See All URLs You've Generated</button>
+        </form>
+    </div>
 </body>
 </html>

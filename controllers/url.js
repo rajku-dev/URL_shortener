@@ -16,6 +16,7 @@ async function handlePostURL (req,res){
     if(!req.user) return res.redirect('/signup');
     console.log('user exists')
     const user= req.user;
+    console.log(user)
     const redirectURL=req.body.redirectURL;
     if(!redirectURL) res.status(400).json({msg: 'Please provide with the redictedURL'})
     const shortID= shortid();
@@ -28,7 +29,8 @@ async function handlePostURL (req,res){
         }
     )
     return res.render('home',{
-        id: shortID
+        id: shortID,
+        username: user.name
     })
 }
 

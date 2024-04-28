@@ -21,7 +21,7 @@ router.post('/login', async (req,res)=>{
     if(!user) return res.redirect('/signup')
     const token = setUser(user);
     res.cookie('uid',token,{
-        maxAge:30000
+        maxAge:3600000
     })
     return res.redirect('/')
 })
