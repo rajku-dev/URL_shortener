@@ -5,7 +5,8 @@ const router = express.Router()
 router.get('/', (req,res)=>{
     const uid = req.cookies?.uid;
     const user = getUser(uid);
-    const username = user.name;
+    var username=null;
+    if(user){username = user.name;}
     return res.render('home',{
         username:username
     });
