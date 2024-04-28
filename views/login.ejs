@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/user/login" method= "POST">
+        <label>Enter Your Email</label>
+        <input required type="email" name="email"/>
+        <br>
+        <label>Enter Your Password</label>
+        <input required type="password" name="password"/>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+</body>
+</html>
