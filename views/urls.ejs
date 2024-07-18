@@ -40,6 +40,18 @@
             border-bottom: 1px solid #ddd;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 20px;
+            color: #ffb300;
+            font-weight: bold;
+    }
+
+    
 
         th {
             background-color: #ff6347;
@@ -56,9 +68,11 @@
         }
 
         a {
-            color: #ff4500;
+            color: #ff7c4c;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: bold;
+            font-size: 20px;
         }
 
         a:hover {
@@ -97,6 +111,7 @@
                 <th>Shortened URL</th>
                 <th>Total Clicks</th>
                 <th>Click to Go</th>
+                <th>Delete URL</th>
             </thead>
             <tbody>
                 <% allURL.forEach((url,index) => { %>
@@ -106,10 +121,24 @@
                     <td>http://localhost:3000/url/<%= url.shortID %></td>
                     <td><%= url.totalClicks %></td>
                     <td><a href="http://localhost:3000/url/<%= url.shortID %>">Visit</a></td>
+                    <td><button onclick="sendDeleteRequest('<%= url.shortID %>')">Delete</button></td>
                  </tr>
                 <% }) %>
             </tbody>
         </table>
     <% } %>
+    <script>
+        function sendDeleteRequest(shortID) {
+            fetch(`/url/${shortID}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                response.json;
+                location.reload()
+            })
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 </html>

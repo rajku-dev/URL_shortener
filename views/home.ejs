@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             height: 100vh;
         }
@@ -39,9 +39,10 @@
         input[type="text"] {
             padding: 10px;
             margin-bottom: 10px;
+            margin-right: 1px;
             border: 1px solid #004080;
             border-radius: 4px;
-            width: 100%;
+            width: 90%;
         }
 
         button {
@@ -95,13 +96,14 @@
     </style>
 </head>
 <body>
+   <div class="div">
     <% if (locals.username) { %>
-     <h1>Hi <%= username %></h1>
-    <% } %>
-    <br>
-    <% if(locals.id){ %>
-        <h3>URL Generated http://localhost:3000/url/<%= id %></h3>
-    <% } %>
+        <h1>Hi <%= username %></h1>
+       <% } %>
+       <% if(locals.id){ %>
+           <h3>URL Generated http://localhost:3000/url/<%= id %></h3>
+       <% } %>
+   </div>
     <div class="container">
         <h1>URL Shortener</h1>
         <form action="/url" method="POST">

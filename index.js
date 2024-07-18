@@ -3,6 +3,7 @@ const {router: urlRoute}= require('./routes/url')
 const {router:staticRoute} = require('./routes/staticRoutes')
 const {router:userRoute} = require('./routes/user')
 const {restrictToLoginUsersOnly, checkAuth} = require('./middlewares/auth')
+require('dotenv').config();
 
 const cookieParser = require('cookie-parser')
 
@@ -12,7 +13,7 @@ const path = require('path')
 
 const app= express()
 
-connectToMongoDB('mongodb://localhost:27017/URL-Shortner-Database')
+connectToMongoDB(process.env.MONGODB_URI)
 .then( console.log('Connection to Database Successful'))
 
 app.use(express.json())
